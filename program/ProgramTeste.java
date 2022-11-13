@@ -10,6 +10,7 @@ public class ProgramTeste {
 
         System.out.println("Hello, World!");
         System.out.println(" ------ começar a ver a questão das contas ------");
+        System.out.println();
 
         Account acc1 = new Account("hebert benigno da silva", 6514, 800.00);
         System.out.println(acc1);
