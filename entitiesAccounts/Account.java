@@ -8,16 +8,14 @@ public class Account {
     protected String userName;
     protected Integer accountNumber;
     protected double balance;
-    protected double withdrawLimit;
 
     public Account(){
     }
 
-    public Account(String userName, Integer accountNumber, double balance, double withdrawLimit) {
+    public Account(String userName, Integer accountNumber, double balance) {
         this.userName = userName;
         this.accountNumber = accountNumber;
         this.balance = balance;
-        this.withdrawLimit = withdrawLimit;
     }
 
     public String getUserName() {
@@ -44,36 +42,4 @@ public class Account {
         this.balance = balance;
     }
 
-    public double getWithdrawLimit() {
-        return withdrawLimit;
-    }
-
-    public void setWithdrawLimit(double withdrawLimit) {
-        this.withdrawLimit = withdrawLimit;
-    }
-
-    public void deposit(double amount){
-        this.balance += amount;
-    }
-
-    public void withdraw(double amount){
-        if(amount <= withdrawLimit){
-            this.balance -= amount;
-        }
-        else{
-            while(amount > withdrawLimit){
-                System.out.print("o valor informado ultrapassa o seu  limite de saque\nPor favor, informe um valor válido:");
-                amount = sc.nextDouble();
-                if(amount <= withdrawLimit){
-                    this.balance -= amount;
-                }
-            }
-        }
-        
-    }
-
-    @Override
-    public String toString() {
-        return "UserName: " + userName + "\nAccountNumber: " + accountNumber + "\nBalance: " + balance + "\nWithdraw Limit: " + withdrawLimit;
-    }
 }
