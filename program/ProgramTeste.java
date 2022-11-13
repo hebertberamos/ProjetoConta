@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 import entitiesAccounts.Account;
-import entitiesAccounts.BusinessAccount;
+import entitiesAccounts.PersonalAccount;
 
 public class ProgramTeste {
     
@@ -15,17 +15,35 @@ public class ProgramTeste {
 
         System.out.println(" ------- PRIMEIRA CONTA -------");
 
-        Account acc1 = new Account("hebert benigno da silva", 6514, 800.00);
+        Account acc1 = new Account("hebert benigno da silva", 6514, 800.00, 600.00);
         System.out.println(acc1);
 
-        System.out.println(" ------- SEGUNDA CONTA -------");
-
-        Account acc2 = new BusinessAccount("Mayane de lima aguiar", 84256, 500.00, "6548411235");
-        System.out.println(acc2);
-
-        System.out.println(" ------- TERCEIRA CONTA -------");
-        
         System.out.println();
+        System.out.print("deseja realizar um saque na conta?");
+        char resp = sc.next().charAt(0);
+        if(resp == 's'){
+            System.out.println("informe o valor que deseja sacar: ");
+            double valor = sc.nextDouble();
+            acc1.withdraw(valor);
+            System.out.println(acc1);
+        }
+
+        System.out.println(" --------------------------------------------- ");
+        System.out.println();
+        System.out.println(" ------- SEGUNDA CONTA -------");
+        Account acc2 = new PersonalAccount("mayane de lima aguiar", 6547899, 1000.00, 600.00, "654789125");
+        System.out.println();
+        System.out.println(acc2);
+        System.out.println();
+        System.out.println("deseja realizar um saque na conta?");
+        resp = sc.next().charAt(0);
+        if(resp == 's'){
+            System.out.println("informe o valor que deseja sacar: ");
+            double valor = sc.nextDouble();
+            acc2.withdraw(valor);
+        }
+
+        System.out.println(acc2);
 
         sc.close();
     }

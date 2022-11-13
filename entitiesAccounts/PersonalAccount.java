@@ -1,26 +1,26 @@
 package entitiesAccounts;
 
-public class BusinessAccount extends Account {
+public class PersonalAccount extends Account{
     
-    public String cnpj;
+    public String cpf;
 
-    public BusinessAccount(){
+    public PersonalAccount(){
     }
 
-    public BusinessAccount(String userName, Integer accountNumber, double balance, double withdrawLimit, String cnpj) {
+    public PersonalAccount(String userName, Integer accountNumber, double balance,  double withdrawLimit, String cpf) {
         super(userName, accountNumber, balance, withdrawLimit);
-        this.cnpj = cnpj;
+        this.cpf = cpf;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
-
-    @Override
+    
+    @Override 
     public void deposit(double amount){
         this.balance += amount;
     }
@@ -43,9 +43,8 @@ public class BusinessAccount extends Account {
 
     @Override
     public String toString() {
-        return super.toString() +
-        "\nCNPJ: " + cnpj;
+        return super.toString() 
+        + "CPF: " + cpf;
     }
-
     
 }
