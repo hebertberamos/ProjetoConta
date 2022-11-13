@@ -2,9 +2,12 @@ package entitiesAccounts;
 
 public class Account {
     
-    private String userName;
-    private Integer accountNumber;
-    private double balance;
+    protected String userName;
+    protected Integer accountNumber;
+    protected double balance;
+
+    public Account(){
+    }
 
     public Account(String userName, Integer accountNumber, double balance) {
         this.userName = userName;
@@ -36,7 +39,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public void addAmount(double amount){
+    public void deposit(double amount){
         this.balance += amount;
     }
 
