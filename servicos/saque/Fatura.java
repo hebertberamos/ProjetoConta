@@ -1,4 +1,4 @@
-package servicos;
+package servicos.saque;
 
 public class Fatura {
     

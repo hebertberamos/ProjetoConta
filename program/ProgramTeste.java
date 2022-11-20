@@ -4,9 +4,10 @@ import entidadeServico.TaxPerssonalAccount;
 import entitiesAccounts.Account;
 import entitiesAccounts.BusinessAccount;
 import entitiesAccounts.PersonalAccount;
-import servicos.Fatura;
-import servicos.Saque;
-import servicos.ServicoSaque;
+import servicos.deposito.Deposito;
+import servicos.saque.Fatura;
+import servicos.saque.Saque;
+import servicos.saque.ServicoSaque;
 
 
 public class ProgramTeste {
@@ -44,14 +45,28 @@ public class ProgramTeste {
                 ServicoSaque ss = new ServicoSaque(new TaxPerssonalAccount());
                 ss.processarFatura(saque);
 
+                System.out.println(" --------------- AÇÃO REALIZADA --------------- ");
+                System.out.println();
                 System.out.println("----------------- FATURA -----------------");
                 System.out.println();
                 System.out.println("valor básico do saque: " + String.format("%.2f", saque.getFatura().getValorSaque()));
                 System.out.println("valor da taxa: " + String.format("%.2f", saque.getFatura().getTax()));
                 System.out.println("valor total a pagar: " + String.format("%.2f", saque.getFatura().pagamentoTotal()));
             }
+            else if(resp1 == 'd'){
+                System.out.println("Informe o valor que deseja depositar");
+                Double valorDeposito = sc.nextDouble();
+                Deposito dep = new Deposito(valorDeposito, acc);
+                dep.processarDeposito();
+                
+                
+                System.out.println(" --------------- AÇÃO REALIZADA ---------------");
+                System.out.println();
+                System.out.println("Valor depositado: " + valorDeposito);
+                System.out.println("Valor atual da conta: " + acc.getBalance());                
+            }
         }
-        else{
+        else {
             System.out.print("entre com o CNPJ da empresa: ");
             String cnpj = sc.next();
             Account acc = new BusinessAccount(userName, AccountNumber, saldo, cnpj);
@@ -71,6 +86,19 @@ public class ProgramTeste {
                 System.out.println("valor básico do saque: " + String.format("%.2f", saque.getFatura().getValorSaque()));
                 System.out.println("valor da taxa: " + String.format("%.2f", saque.getFatura().getTax()));
                 System.out.println("valor total a pagar: " + String.format("%.2f", saque.getFatura().pagamentoTotal()));
+                System.out.println("valor total na sua conta: " + acc.getBalance());
+            }
+            else if(resp1 == 'd'){
+                System.out.println("Informe o valor que deseja depositar");
+                Double valorDeposito = sc.nextDouble();
+                Deposito dep = new Deposito(valorDeposito, acc);
+                dep.processarDeposito();
+                
+                
+                System.out.println(" --------------- AÇÃO REALIZADA ---------------");
+                System.out.println();
+                System.out.println("Valor depositado: " + valorDeposito);
+                System.out.println("Valor atual da conta: " + acc.getBalance()); 
             }
         }      
 
